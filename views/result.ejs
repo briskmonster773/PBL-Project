@@ -1,0 +1,42 @@
+<% layout("/layout/boilarplate") %>
+
+<div class="container py-5 text-center">
+  <h1 class="mb-4 text-success">🌱 Soil Health Result</h1>
+
+  <% 
+    var healthText = "Unknown";
+    var icon = "❔";
+    if (typeof prediction !== "undefined" && prediction) {
+      var lower = prediction.toLowerCase();
+      if (lower.includes("healthy") || lower.includes("good")) { 
+        healthText = "GOOD 🌿"; 
+        icon = "🟢";
+      } 
+      else if (lower.includes("moderate") || lower.includes("average")) { 
+        healthText = "MODERATE ⚖️"; 
+        icon = "🟡";
+      } 
+      else if (lower.includes("poor") || lower.includes("degraded") || lower.includes("bad")) { 
+        healthText = "BAD 🚫"; 
+        icon = "🔴";
+      } 
+      else if (lower.includes("saline")) { 
+        healthText = "SALINE ⚠️"; 
+        icon = "⚠️";
+      }
+    }
+  %>
+
+  <div class="card shadow-lg p-5 border-0 rounded-4 mx-auto" style="max-width: 500px;">
+    <h2 class="mb-3"><%= icon %> <%= healthText %></h2>
+    <% if (typeof message !== "undefined") { %>
+      <p class="lead text-muted"><%= message %></p>
+    <% } %>
+  </div>
+
+  <div class="mt-4">
+    <a href="/" class="btn btn-outline-success">
+      <i class="fas fa-arrow-left me-2"></i>Back to Home
+    </a>
+  </div>
+</div>

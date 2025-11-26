@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-2">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand text-success fw-bold" href="/">🌱 FarmSense</a>
+
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" 
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link text-secondary px-2" href="/">Home</a>
+        </li>
+
+        <% if (currentUser) { %>
+          <!-- ✅ When User is Logged In -->
+          <li class="nav-item">
+            <a class="nav-link text-secondary px-2" href="/dashboard">Dashboard</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-secondary px-2" href="/expert">Expert</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-secondary px-2" href="/basic">Basic</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-success fw-bold px-3" href="#" 
+               id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              👤 <%= currentUser %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+              <li><a class="dropdown-item" href="/dashboard">My Reports</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+            </ul>
+          </li>
+
+        <% } else { %>
+          <!-- ✅ When User is Logged Out -->
+          <li class="nav-item">
+            <a class="nav-link text-secondary px-2" href="/expert">Expert</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-secondary px-2" href="/basic">Basic</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="btn btn-success px-3 ms-3" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-success ms-2" href="/signup">Signup</a>
+          </li>
+        <% } %>
+
+      </ul>
+    </div>
+  </div>
+</nav>

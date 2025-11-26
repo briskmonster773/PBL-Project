@@ -1,0 +1,147 @@
+<% layout("/layout/boilarplate") %>
+
+<!-- ✅ Hero Section -->
+<header class="hero-section text-center text-white d-flex align-items-center justify-content-center">
+  <div class="container animate__animated animate__fadeInDown">
+    <h1 class="display-4 fw-bold">🌱 FarmSense</h1>
+    <p class="lead mt-3">Smart Soil Analysis • Crop Recommendation • Weather-aware Farming</p>
+
+    <div class="mt-4">
+      <a href="/expert" class="btn btn-success btn-lg px-4 me-2">
+        🧪 Expert Mode
+      </a>
+      <a href="/basic" class="btn btn-outline-light btn-lg px-4">
+        👨‍🌾 Basic Mode
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ About Section -->
+<section class="container my-5">
+  <div class="row align-items-center">
+    
+    <!-- Left Image -->
+    <div class="col-md-6 animate-on-scroll" data-animation="animate__fadeInLeft">
+      <img src="/images/soil.png" alt="Soil Analysis" 
+        class="img-fluid rounded shadow-lg">
+    </div>
+
+    <!-- Right Content -->
+    <div class="col-md-6 mt-4 mt-md-0 animate-on-scroll" data-animation="animate__fadeInRight">
+      <h2 class="fw-bold mb-3 text-success">Empower Your Farming with AI</h2>
+      <p class="text-muted">
+        FarmSense helps farmers understand their soil better, choose the right crops,
+        and grow healthier yield using precision insights.
+      </p>
+
+      <ul class="list-unstyled mt-3">
+        <li class="mb-3">
+          ✅ <strong>Instant Soil Health Report</strong> using advanced machine learning.
+        </li>
+        <li class="mb-3">
+          ✅ <strong>Weather-integrated Insights</strong> for better decisions.
+        </li>
+        <li class="mb-3">
+          ✅ <strong>Personalized Crop Recommendations</strong> based on soil, season, and district.
+        </li>
+      </ul>
+
+      <a href="/expert" class="btn btn-primary btn-lg mt-3">
+        Start Soil Analysis →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ Features Section -->
+<section class="features-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5 fw-bold">Why Farmers Trust FarmSense?</h2>
+
+    <div class="row g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-4 animate-on-scroll" data-animation="animate__zoomIn">
+        <div class="feature-card shadow-sm p-4 rounded text-center h-100">
+          <i class="fas fa-seedling fa-3x text-success mb-3"></i>
+          <h5 class="fw-bold">Accurate Soil Testing</h5>
+          <p class="text-muted">
+            AI-powered soil diagnosis for real-time nutrient and pH evaluation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4 animate-on-scroll" data-animation="animate__zoomIn" style="animation-delay: 0.2s;">
+        <div class="feature-card shadow-sm p-4 rounded text-center h-100">
+          <i class="fas fa-cloud-sun fa-3x text-primary mb-3"></i>
+          <h5 class="fw-bold">Weather Smart</h5>
+          <p class="text-muted">
+            Integrated temperature, rainfall, sunlight & wind data for optimized planning.
+          </p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4 animate-on-scroll" data-animation="animate__zoomIn" style="animation-delay: 0.4s;">
+        <div class="feature-card shadow-sm p-4 rounded text-center h-100">
+          <i class="fas fa-tractor fa-3x text-warning mb-3"></i>
+          <h5 class="fw-bold">Crop Guidance</h5>
+          <p class="text-muted">
+            Smart crop suggestions based on season, soil, and district conditions.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ✅ CTA Section -->
+<section class="cta-section text-center text-white py-5">
+  <h2 class="fw-bold mb-3">Start Improving Your Soil Today</h2>
+  <p class="mb-4">Join thousands of farmers who trust FarmSense for smart farming</p>
+
+  <a href="/signup" class="btn btn-light btn-lg px-5">
+    Create Free Account
+  </a>
+</section>
+
+<!-- ✅ Scroll Animation Script -->
+<script>
+  const animatedEls = document.querySelectorAll(".animate-on-scroll");
+
+  const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const animClass = entry.target.getAttribute("data-animation");
+        entry.target.classList.add("animate__animated", animClass);
+        entry.target.style.opacity = 1;
+        scrollObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.25 });
+
+  animatedEls.forEach(el => {
+    el.style.opacity = 0;
+    scrollObserver.observe(el);
+  });
+</script>
+
+<!-- ✅ Extra CSS -->
+<style>
+  .hero-section {
+    height: 75vh;
+    background: url('/images/farm-bg.jpg') center/cover no-repeat;
+    padding: 20px;
+  }
+
+  .features-section {
+    background: #f8f9fa;
+  }
+
+  .cta-section {
+    background: linear-gradient(135deg, #28a745, #218838);
+  }
+</style>
